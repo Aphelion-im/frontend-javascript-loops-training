@@ -3,10 +3,10 @@
 // Schrijf een script dat voor iedere student in de array de score (het getal uit de property "score") in de terminal print
 
 const scores = [
-    {name: 'Max', score: 83, grade: null},
-    {name: 'David', score: 77, grade: null},
-    {name: 'Khalid', score: 92, grade: null},
-    {name: 'Rianne', score: 66, grade: null}
+  { name: 'Max', score: 83, grade: null },
+  { name: 'David', score: 77, grade: null },
+  { name: 'Khalid', score: 92, grade: null },
+  { name: 'Rianne', score: 66, grade: null },
 ];
 
 // Verwachtte uitkomsten:
@@ -16,9 +16,9 @@ const scores = [
 // 66ç
 // ==========================================
 
-
-
-
+for (let i = 0; i < scores.length; i++) {
+console.log('Score student ' + scores[i].name + ': ' + scores[i].score + '.');
+}
 
 // ==========================================
 // Opdracht 1b
@@ -32,9 +32,19 @@ const scores = [
 // D
 // ==========================================
 
+// Aan de peer reviewer: Ik heb voor deze if-notatie gekozen om geneste if structuren te vermijden, zoals uitgelegd in deze Youtube video:
+// https://www.youtube.com/watch?v=EumXak7TyQ0
 
+let grade = '';
+for (let i =0; i < scores.length; i++) {
+if (scores[i].score < 60) finalScore = 'F';
+if (scores[i].score > 60 && scores[i].score < 70) grade = 'D';
+if (scores[i].score > 70 && scores[i].score < 80) grade = 'C';
+if (scores[i].score > 80 && scores[i].score < 90) grade = 'B';
+if (scores[i].score > 90) grade = 'A';
 
-
+console.log('Score student ' + scores[i].name + ': ' + grade + '.');
+}
 
 // ==========================================
 // Opdracht 1c
@@ -49,19 +59,29 @@ const scores = [
 //  ];
 // ==========================================
 
+let grade2 = '';
+for (let i =0; i < scores.length; i++) {
+if (scores[i].score < 60) finalScore = 'F';
+if (scores[i].score > 60 && scores[i].score < 70) grade2 = 'D';
+if (scores[i].score > 70 && scores[i].score < 80) grade2 = 'C';
+if (scores[i].score > 80 && scores[i].score < 90) grade2 = 'B';
+if (scores[i].score > 90) grade2 = 'A';
 
-
-
+scores[i].grade = grade2;
+console.log('Score student ' + scores[i].name + ': ' + grade2 + '.');
+}
+// Gebruik hiervoor de index.html > Chrome dev tools > console, om dit object te bekijken. Nodemon geeft het niet goed weer:
+console.table(scores);
 
 // ==========================================
 // Opdracht 2
 // Schrijf een script die e-mailadressen genereert voor al onze medewerkers. Sla dit op in een nieuwe property "email" die je toevoegt aan iedere medewerker.
 
 const NOVIEmployees = [
-    {firstName: 'Nova', lastName: 'Eeken'},
-    {firstName: 'Sam', lastName: 'Barnhoorn'},
-    {firstName: 'Tessa', lastName: 'Steur'},
-    {firstName: 'Mark', lastName: 'Rensen'},
+  { firstName: 'Nova', lastName: 'Eeken' },
+  { firstName: 'Sam', lastName: 'Barnhoorn' },
+  { firstName: 'Tessa', lastName: 'Steur' },
+  { firstName: 'Mark', lastName: 'Rensen' },
 ];
 
 // Bij NOVI horen de e-mailadressen altijd in het volgende format: voornaam.achternaam@novi.nl
@@ -75,17 +95,21 @@ const NOVIEmployees = [
 //  ];
 // ==========================================
 
-
-
-
-
+for (let i =0; i < NOVIEmployees.length; i++) {
+const emailAddress = `${NOVIEmployees[i].firstName}.${NOVIEmployees[i].lastName}@novi.nl`;
+NOVIEmployees[i].email = emailAddress;
+}
+console.table(NOVIEmployees); // Zie gekoppelde index.html > Chrome dev tools > Console.
 
 // Opdracht 2-BONUS
 // Lukt het je om ervoor te zorgen dat alle e-mailadressen in lowercase letters komen te staan? Dit heb je nog niet geleerd, maar google is your best friend...
 // ==========================================
 
-
-
+for (let i =0; i < NOVIEmployees.length; i++) {
+const emailAddress = (`${NOVIEmployees[i].firstName}.${NOVIEmployees[i].lastName}@novi.nl`).toLowerCase();
+NOVIEmployees[i].email = emailAddress;
+}
+console.table(NOVIEmployees); // Zie gekoppelde index.html > Chrome dev tools > Console.
 
 // ==========================================
 // Opdracht 3
@@ -100,18 +124,18 @@ const NOVIEmployees = [
 //  3583 = Schildersbuurt
 
 const students = [
-    {name: 'Mariska', city: 'Utrecht', zipCode: '3513', neighborhood: null},
-    {name: 'Mehmet', city: 'Utrecht', zipCode: '3514', neighborhood: null},
-    {name: 'Dennis', city: 'Utrecht', zipCode: '3572', neighborhood: null},
-    {name: 'Robin', city: 'Utrecht', zipCode: '3581', neighborhood: null},
-    {name: 'Tanush', city: 'Utrecht', zipCode: '3512', neighborhood: null},
-    {name: 'Florien', city: 'Utrecht', zipCode: '3513', neighborhood: null},
-    {name: 'Larissa', city: 'Utrecht', zipCode: '3583', neighborhood: null},
-    {name: 'Marijn', city: 'Utrecht', zipCode: '3572', neighborhood: null},
-    {name: 'Jan', city: 'Utrecht', zipCode: '3531', neighborhood: null},
-    {name: 'Laura', city: 'Utrecht', zipCode: '3531', neighborhood: null},
-    {name: 'Aicha', city: 'Utrecht', zipCode: '3514', neighborhood: null},
-    {name: 'Karima', city: 'Utrecht', zipCode: '3531', neighborhood: null},
+  { name: 'Mariska', city: 'Utrecht', zipCode: '3513', neighborhood: null },
+  { name: 'Mehmet', city: 'Utrecht', zipCode: '3514', neighborhood: null },
+  { name: 'Dennis', city: 'Utrecht', zipCode: '3572', neighborhood: null },
+  { name: 'Robin', city: 'Utrecht', zipCode: '3581', neighborhood: null },
+  { name: 'Tanush', city: 'Utrecht', zipCode: '3512', neighborhood: null },
+  { name: 'Florien', city: 'Utrecht', zipCode: '3513', neighborhood: null },
+  { name: 'Larissa', city: 'Utrecht', zipCode: '3583', neighborhood: null },
+  { name: 'Marijn', city: 'Utrecht', zipCode: '3572', neighborhood: null },
+  { name: 'Jan', city: 'Utrecht', zipCode: '3531', neighborhood: null },
+  { name: 'Laura', city: 'Utrecht', zipCode: '3531', neighborhood: null },
+  { name: 'Aicha', city: 'Utrecht', zipCode: '3514', neighborhood: null },
+  { name: 'Karima', city: 'Utrecht', zipCode: '3531', neighborhood: null },
 ];
 
 // Verwachte uitkomsten:
@@ -131,5 +155,29 @@ const students = [
 // ]
 // ==========================================
 
+for (let i = 0; i < students.length; i++) {
+  const zipcode = students[i].zipCode;
+  students[i].neighborhood = checkZipCode(zipcode);
+}
+console.table(students);
 
-
+function checkZipCode(zipcode) {
+  switch (zipcode) {
+    case '3513':
+      return 'Pijlsweerd';
+    case '3514':
+      return 'Vogelenbuurt';
+    case '3512':
+      return 'Binnenstad';
+    case '3531':
+      return 'Lombok';
+    case '3572':
+      return 'Wittevrouwen';
+    case '3581':
+      return 'Oudwijk';
+    case '3583':
+      return 'Schildersbuurt';
+    default:
+      return;
+  }
+}
